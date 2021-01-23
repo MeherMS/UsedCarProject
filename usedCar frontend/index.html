@@ -4,22 +4,21 @@
 	<title>Used car prediction</title>
 	<meta charset="UTF-8">
 	
+
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animate/animate.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<link rel="stylesheet" type="text/css" href="css/animsition/css/animsition.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<link rel="stylesheet" type="text/css" href="css/select2/select2.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<link rel="stylesheet" type="text/css" href="css/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -173,11 +172,23 @@
 							<option>Select Fuel</option>
 							<option>Gasoline</option>
 							<option>Diesel</option>
+							<option>hybrid</option>
+							<option>electric</option>
+							
 						</select>
 					</div>
 					<span class="focus-input100"></span>
 				</div>
 
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Power</span>
+					<div>
+						<select class="selection-2" id="Power" name="Power">
+							<option>Select Power</option>
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>
 
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Transmission</span>
@@ -201,7 +212,31 @@
 						</select>
 					</div>
 					<span class="focus-input100"></span>
-				</div>		
+				</div>	
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Car Condition</span>
+					<div>
+						<select class="selection-2" id="car_condition" name="car_condition">
+							<option>Select Car Condition</option>
+						
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>	
+
+				<div class="wrap-input100 input100-select">
+					<span class="label-input100">Car Style</span>
+					<div>
+						<select class="selection-2" id="car_style" name="car_style">
+							<option>Select Car Style</option>
+						
+						</select>
+					</div>
+					<span class="focus-input100"></span>
+				</div>	
+
+
 			</form>
 			<div class="container-contact100-form-btn">
 					<div class="wrap-contact100-form-btn">
@@ -222,14 +257,14 @@
 	<div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="css/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/animsition/js/animsition.min.js"></script>
+	<script src="css/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="css/bootstrap/js/popper.js"></script>
+	<script src="css/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="css/select2/select2.min.js"></script>
 	<script>
 		$(".selection-2").select2({
 			minimumResultsForSearch: 20,
@@ -237,10 +272,10 @@
 		});
 	</script>
 <!--===============================================================================================-->
-	<script src="vendor/daterangepicker/moment.min.js"></script>
-	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+	<script src="css/daterangepicker/moment.min.js"></script>
+	<script src="css/daterangepicker/daterangepicker.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/countdowntime/countdowntime.js"></script>
+	<script src="css/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/main.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -313,6 +348,32 @@
     	});
 	});
 	
+	var sel = document.getElementById('Power');
+	for(var i = 0; i < 10; i++) {
+		var opt = document.createElement('option');
+    	opt.innerHTML = i;
+    	opt.value = i;
+    	sel.appendChild(opt);
+	}
+
+	var car_condition=['Nouveau','Avec kilométrage','Non dédouanné','RS','Pièces manquantes'];
+	var sel = document.getElementById('car_condition');
+	for(var i = 0; i < car_condition.length ; i++) {
+		var opt = document.createElement('option');
+    	opt.innerHTML = car_condition[i];
+    	opt.value = car_condition[i];
+    	sel.appendChild(opt);
+	}
+
+	var car_style=['Compacte','Berline','Cabriolet','4 x 4','Monospace','Utilitaire','Pick up','Autres'];
+	var sel = document.getElementById('car_style');
+	for(var i = 0; i < car_style.length ; i++) {
+		var opt = document.createElement('option');
+    	opt.innerHTML = car_style[i];
+    	opt.value = car_style[i];
+    	sel.appendChild(opt);
+	}
+
 
 	$("#send").click(function(){
 		var qurl="http://127.0.0.1:5000/";
