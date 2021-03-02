@@ -168,7 +168,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Fuel</span>
 					<div>
-						<select class="selection-2" name="budget">
+						<select class="selection-2" id="Fuel" name="Fuel">
 							<option>Select Fuel</option>
 							<option>Gasoline</option>
 							<option>Diesel</option>
@@ -193,7 +193,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Transmission</span>
 					<div>
-						<select class="selection-2" name="budget">
+						<select class="selection-2" id="Transmission" name="Transmission">
 							<option>Select Transmission</option>
 							<option>Manual</option>
 							<option>Automatic</option>
@@ -206,7 +206,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Engine Size</span>
 					<div>
-						<select class="selection-2" id="engine_size" name="engine_size">
+						<select class="selection-2" id="Engine_size" name="engine_size">
 							<option>Select Engine Size</option>
 						
 						</select>
@@ -217,7 +217,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Car Condition</span>
 					<div>
-						<select class="selection-2" id="car_condition" name="car_condition">
+						<select class="selection-2" id="Car_condition" name="car_condition">
 							<option>Select Car Condition</option>
 						
 						</select>
@@ -228,7 +228,7 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Car Style</span>
 					<div>
-						<select class="selection-2" id="car_style" name="car_style">
+						<select class="selection-2" id="Car_style" name="car_style">
 							<option>Select Car Style</option>
 						
 						</select>
@@ -296,7 +296,7 @@
 	                 '2.0', '2.1', '2.2', '2.3', '2.4', '2.5', '2.6', '2.7', '2.8', '2.9',
 	                 '3.0', '3.1', '3.2', '3.3', '3.4', '3.5', '3.6', '3.7', '3.8', '3.9',
                      '>4.0'];
-    var sel = document.getElementById('engine_size');
+    var sel = document.getElementById('Engine_size');
 	for(var i = 0; i < engine_size.length; i++) {
 		var opt = document.createElement('option');
     	opt.innerHTML = engine_size[i];
@@ -357,7 +357,7 @@
 	}
 
 	var car_condition=['Nouveau','Avec kilométrage','Non dédouanné','RS','Pièces manquantes'];
-	var sel = document.getElementById('car_condition');
+	var sel = document.getElementById('Car_condition');
 	for(var i = 0; i < car_condition.length ; i++) {
 		var opt = document.createElement('option');
     	opt.innerHTML = car_condition[i];
@@ -366,7 +366,7 @@
 	}
 
 	var car_style=['Compacte','Berline','Cabriolet','4 x 4','Monospace','Utilitaire','Pick up','Autres'];
-	var sel = document.getElementById('car_style');
+	var sel = document.getElementById('Car_style');
 	for(var i = 0; i < car_style.length ; i++) {
 		var opt = document.createElement('option');
     	opt.innerHTML = car_style[i];
@@ -381,10 +381,19 @@
         var make=  $("#Make").val();
         var mileage= $("#Mileage").val();
         var year= $("#Year").val();
+        var fuel=$("#Fuel").val();
+        var power=$("#Power").val();
+        var transmission=$("#Transmission").val();
+        var engine_size=$("#Engine_size").val();
+        var car_condition=$("#Car_condition").val();
+        var car_style=$("#Car_style").val();
+
         $.ajax({
         	type: "POST",
             cache: false,
-            data:{"make":make,"model":model,"mileage":mileage,"year":year},
+            data:{"make":make,"model":model,"mileage":mileage,"year":year,"fuel":fuel,"power":power,
+            	  "transmission":transmission,"engine_size":engine_size,"car_condition":car_condition,
+            		"car_style":car_style},
             url: qurl,
             dataType: 'json',
             }).done(function (data) {
